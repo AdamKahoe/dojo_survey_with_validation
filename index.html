@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="flask_app\static\style.css">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/create/survey" method="post" class="col-5 mx-auto border p-5 my-5 text-light bg-dark">
+            <h2 class="text-warning">Dojo Survey</h2>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="location">Dojo Location:</label>
+                <select name="location" id="dojo" class="form-control">
+                    <option value="">-- Select A Location --</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="Online">Online</option>
+                    <option value="Burbank">Burbank</option>
+                    <option value="Bellevue">Bellevue</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="langauge">Favorite Language:</label>
+                <select name="language" id="language" class="form-control">
+                    <option value="">-- Select A Language --</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="C#">C#</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments:</label>
+                <textarea name="comments" id="comments" class="form-control" cols="30" rows="10"></textarea>
+            </div>
+            <input type="submit" class="btn btn-warning btn-outline-dark" value="Submit">
+        </form>
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+            {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
